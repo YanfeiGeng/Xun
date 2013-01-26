@@ -2,25 +2,25 @@ goog.provide('xun.Cube');
 
 goog.require('xun.H_Spirite');
 
-xun.Cube = function(type, width, height, posx, posy) {
+xun.Cube = function(type, cubeScale, posScale) {
 	lime.Sprite.call(this);
 	//Return single xun.Cube
 	//Contains the inner object, randomly
 
-	// this.setRenderer(lime.Renderer.DOM)
-	//     .setFill('assets/background.jpg')
-	//     .setPosition(posx, posy)
-	//     .setSize(width, height);
+	var cardCallback = function(amount){
+		//1. Drop blood of the card
+		var card = xun.Stage.config.card;
+		card.dropLife(amount);
+		cardu
+		alert('Blood dropped:' + amount);
+	}
+
 	var spriteCreater = new xun.H_Spirite();
-	var position = {
-		x : 100,
-		y : 50
-	};
-	var scale = {
-		x : 100,
-		y : 50
-	};
-	this.appendChild(spriteCreater.Create('block',position, scale));
+	if(cubeScale && posScale){
+		this.appendChild(spriteCreater.Create('block', posScale, cubeScale, cardCallback));
+	}
+
+	
 	// alert('Cube Created!');
 };
 goog.inherits(xun.Cube, lime.Sprite);

@@ -17,7 +17,7 @@ goog.require('xun.Stage');
 // entrypoint
 xun.start = function() {
 
-	xun.director = new lime.Director(document.body, 320, 460);
+	xun.director = new lime.Director(document.body, 1024, 768);
 	var scene = new lime.Scene(),
 	    layer = new lime.Layer();
 

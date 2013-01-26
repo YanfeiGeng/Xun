@@ -12,6 +12,7 @@ xun.Stage = function() {
 	this.puzzle = new xun.Puzzle();
 	//2. Create Card
 	this.card = new xun.Card();
+	xun.Stage.config.card = this.card;
 	this.appendChild(this.puzzle);
 	this.appendChild(this.card);
 	return this;
@@ -19,8 +20,8 @@ xun.Stage = function() {
 goog.inherits(xun.Stage, lime.Sprite);
 
 xun.Stage.config = {
-	cubeWidth:60,
-	cubeHeight:80,
+	width:1024,
+	height:768,
     puzzle: {
         row: 3,
         column : 3,
@@ -29,7 +30,8 @@ xun.Stage.config = {
         	2,1,3,
         	4,3,2
         ]
-    }
+    },
+    card: null
 };
 
 xun.Stage.prototype.getName = function(){

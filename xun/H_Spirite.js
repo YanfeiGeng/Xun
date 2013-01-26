@@ -22,7 +22,12 @@ var SType =
 {
 	BLOCK:'block',
 	BACKGROUND:'background',
-	CUBE:'cube'
+	CUBE:'cube',
+	COIN:'coin',
+	HP:'hp',
+	CARD1:'card1',
+	CARD2:'card2',
+	CARD3:'card3',
 };
 
 xun.H_Spirite = function() {
@@ -49,17 +54,8 @@ xun.H_Spirite.prototype.TestFunc =function()
 	H_Spirite.director.replaceScene(gamescene);
 }
 
-xun.H_Spirite.prototype.Up=function(e)
-{
-	SP.setFill(255,0,0);
-}
 
-xun.H_Spirite.prototype.Press=function(e)
-{
-	SP.setFill(255,0,255);
-
-}
-xun.H_Spirite.prototype.Create = function(Type,Position,Scale) //in_Scene,in_Layer,
+xun.H_Spirite.prototype.Create = function(Type,Position,Scale,AMsg) //in_Scene,in_Layer,
 {
 	// var NowScene = in_Scene;
 	// var NowLayer = in_Layer;
@@ -74,23 +70,121 @@ xun.H_Spirite.prototype.Create = function(Type,Position,Scale) //in_Scene,in_Lay
         	Block_SP.setPosition(Position.x, Position.y);
         	Block_SP.setSize(Scale.x, Scale.y);
             // NowLayer.appendChild(Block_SP);
-          //  goog.events.listen(Block_SP, ['mousedown', 'touchstart'], Press);
-           // goog.events.listen(Block_SP, ['mouseup', 'touchstart'], Up);
-           // goog.events.listen(Block_SP, ['mouseup', 'touchstart'], function(e){
+            var Press = function(e)
+	        {
+	           Block_SP.setFill(255,0,255);
+	        }
+	        var Up=function(e)
+	        {
+	        	 Block_SP.setFill(255,0,255);
+	        }
+	        MsgCall=AMsg;
+	        if(MsgCall!=null)
+	        {
+	        	 goog.events.listen(Block_SP, ['mousedown', 'touchstart'], MsgCall);
 
-       		//e.startDrag(false);
-       		//var t = Block_SP;
-       		//e.swallow(['mouseup', 'touchend'], function() {Block_SP.setFill(0, 0, 100)});
-		break;
-		case SType.BACKGROUND:
-		break;
-		case SType.CUBE:
+	        }
 		break;
 	}
+	
 	return Block_SP;
 }
-
-xun.H_Spirite.prototype.Move=function(Position)
+xun.H_Spirite.prototype.ChangeSpirite=function(Sp_Path)
 {
+	SP.setFill(Sp_Path);
+}
+goog.provide("xun.H_Spirite");
 
+goog.require('lime');
+goog.require('lime.Director');
+goog.require('lime.Layer');
+goog.require('lime.Scene');
+goog.require('lime.Sprite');
+goog.require('lime.animation.Delay');
+goog.require('lime.animation.FadeTo');
+goog.require('lime.animation.MoveBy');
+goog.require('lime.animation.MoveTo');
+goog.require('lime.animation.RotateBy');
+goog.require('lime.animation.ScaleBy');
+goog.require('lime.animation.ScaleTo');
+goog.require('lime.animation.Sequence');
+goog.require('lime.animation.Spawn');
+
+var SCREENWIDTH = 1024;
+var SCREENHEIGTH = 768;
+var SP;
+var SType = 
+{
+	BLOCK:'block',
+	BACKGROUND:'background',
+	CUBE:'cube',
+	COIN:'coin',
+	HP:'hp',
+	CARD1:'card1',
+	CARD2:'card2',
+	CARD3:'card3',
+};
+
+xun.H_Spirite = function() {
+};
+
+
+xun.H_Spirite.prototype.TestFunc =function()
+{
+	H_Spirite.director = new lime.Director(document.body, SCREENWIDTH, SCREENHEIGTH);
+	H_Spirite.director.makeMobileWebAppCapable();
+
+	var gamescene = new lime.Scene;
+
+	var flameLayer = new lime.Sprite().setAnchorPoint(0, 0);
+	flameLayer.setPosition(100, 0);
+
+	// canvas rendering for no reason
+	flameLayer.setRenderer(lime.Renderer.CANVAS);
+
+	gamescene.appendChild(flameLayer);
+	var Position ={x:100, y:100};
+	var Scale  =  {x:100, y:100}; 
+	this.Create(SType.BLOCK,gamescene,flameLayer,Position,Scale);
+	H_Spirite.director.replaceScene(gamescene);
+}
+
+
+xun.H_Spirite.prototype.Create = function(Type,Position,Scale,AMsg) //in_Scene,in_Layer,
+{
+	// var NowScene = in_Scene;
+	// var NowLayer = in_Layer;
+	switch(Type)
+	{
+		case SType.BLOCK:
+		var Block_SP = new lime.Sprite;
+			SP=Block_SP; 
+        	// NowLayer.appendChild(Block_SP);
+        	Block_SP.setFill('assets/Cube.PNG');
+        	Block_SP.setRotation(0);
+        	Block_SP.setPosition(Position.x, Position.y);
+        	Block_SP.setSize(Scale.x, Scale.y);
+            // NowLayer.appendChild(Block_SP);
+            var Press = function(e)
+	        {
+	           Block_SP.setFill(255,0,255);
+	        }
+	        var Up=function(e)
+	        {
+	        	 Block_SP.setFill(255,0,255);
+	        }
+	        MsgCall=AMsg;
+	        if(MsgCall!=null)
+	        {
+	        	 goog.events.listen(Block_SP, ['mousedown', 'touchstart'], MsgCall);
+
+	        }
+		break;
+	}
+	
+	return Block_SP;
+}
+xun.H_Spirite.prototype.ChangeSpirite=function(Sp_Path)
+{
+	SP.setFill(Sp_Path);
 }
