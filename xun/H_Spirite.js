@@ -1,4 +1,4 @@
-goog.provide("H_Spirite");
+goog.provide("xun.H_Spirite");
 
 goog.require('lime');
 goog.require('lime.Director');
@@ -20,12 +20,16 @@ var SCREENHEIGTH = 768;
 var SP;
 var SType = 
 {
-BLOCK:'block',
-BACKGROUND:'background',
-CUBE:'cube'
+	BLOCK:'block',
+	BACKGROUND:'background',
+	CUBE:'cube'
 };
 
-H_Spirite.TestFunc =function()
+xun.H_Spirite = function() {
+};
+
+
+xun.H_Spirite.prototype.TestFunc =function()
 {
 	H_Spirite.director = new lime.Director(document.body, SCREENWIDTH, SCREENHEIGTH);
 	H_Spirite.director.makeMobileWebAppCapable();
@@ -44,30 +48,32 @@ H_Spirite.TestFunc =function()
 	this.Create(SType.BLOCK,gamescene,flameLayer,Position,Scale);
 	H_Spirite.director.replaceScene(gamescene);
 }
-H_Spirite.Up=function(e)
+
+xun.H_Spirite.prototype.Up=function(e)
 {
 	SP.setFill(255,0,0);
 }
-H_Spirite.Press=function(e)
+
+xun.H_Spirite.prototype.Press=function(e)
 {
 	SP.setFill(255,0,255);
 
 }
-H_Spirite.Create = function(Type,in_Scene,in_Layer,Position,Scale)
+xun.H_Spirite.prototype.Create = function(Type,Position,Scale) //in_Scene,in_Layer,
 {
-	var NowScene = in_Scene;
-	var NowLayer = in_Layer;
+	// var NowScene = in_Scene;
+	// var NowLayer = in_Layer;
 	switch(Type)
 	{
 		case SType.BLOCK:
 		var Block_SP = new lime.Sprite;
 			SP=Block_SP; 
-        	NowLayer.appendChild(Block_SP);
+        	// NowLayer.appendChild(Block_SP);
         	Block_SP.setFill('assets/Cube.PNG');
         	Block_SP.setRotation(0);
         	Block_SP.setPosition(Position.x, Position.y);
         	Block_SP.setSize(Scale.x, Scale.y);
-            NowLayer.appendChild(Block_SP);
+            // NowLayer.appendChild(Block_SP);
           //  goog.events.listen(Block_SP, ['mousedown', 'touchstart'], Press);
            // goog.events.listen(Block_SP, ['mouseup', 'touchstart'], Up);
            // goog.events.listen(Block_SP, ['mouseup', 'touchstart'], function(e){
@@ -84,7 +90,7 @@ H_Spirite.Create = function(Type,in_Scene,in_Layer,Position,Scale)
 	return Block_SP;
 }
 
-H_Spirite.Move=function(Position)
+xun.H_Spirite.prototype.Move=function(Position)
 {
 
 }
