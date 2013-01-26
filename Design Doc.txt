@@ -1,0 +1,21 @@
+1. 角色
+   卡牌：生命值，攻击力，等级，经验值
+   关卡：3关
+   附属：怪物，宝物，血盒，金币
+2. Classes
+   Card(Life, attack, exp, level)
+       increase/dropLife, increaseLevel, increaseExp   
+   Cube()
+       genereateContainedObject
+   Puzzle(row, column)
+       caculateNeighbor,
+       openCube,
+   Monster(life, attack, type)
+       dropLife
+   Blood(amount)
+   Coin(amount)
+   Stage(number, name)
+   Key(name)
+   
+    
+   
