@@ -1,13 +1,22 @@
-goog.provide('Puzzle');
+goog.provide('xun.Puzzle');
 
-Puzzle = function() {
+goog.require('xun.Cube');
+
+xun.Puzzle = function() {
 	this.name = '';
 };
 
-Puzzle.prototype.setName = function(name){
+xun.Puzzle.prototype.createPuzzle = function(){
+	//1. collect the cubes
+	var cubes = new xun.Cube();
+	cubes.createCube();
+	alert('Puzzle Created!');
+};
+
+xun.Puzzle.prototype.setName = function(name){
 	this.name = name;
 };
 
-Puzzle.prototype.getName = function(){
+xun.Puzzle.prototype.getName = function(){
 	return this.name;
 }

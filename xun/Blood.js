@@ -1,13 +1,13 @@
-goog.provide('Blood');
+goog.provide('xun.Blood');
 
-Blood = function() {
+xun.Blood = function() {
 	this.name = '';
 };
 
-Blood.prototype.getName = function(){
+xun.Blood.prototype.getName = function(){
 	return this.name;
 };
 
-Blood.prototype.setName = function(name){
+xun.Blood.prototype.setName = function(name){
 	this.name = name;
 }

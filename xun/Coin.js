@@ -1,13 +1,13 @@
-goog.provide('Coin');
+goog.provide('xun.Coin');
 
-Coin = function() {
+xun.Coin = function() {
 	this.capacity = '10';
 };
 
-Coin.prototype.getCapacity = function(){
+xun.Coin.prototype.getCapacity = function(){
 	return this.capacity;
 };
 
-Coin.prototype.setCapacity = function(cap){
+xun.Coin.prototype.setCapacity = function(cap){
 	this.capacity = cap;
 }

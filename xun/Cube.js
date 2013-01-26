@@ -1,13 +1,19 @@
-goog.provide('Cube');
+goog.provide('xun.Cube');
 
-Cube = function() {
+xun.Cube = function() {
 	this.name = '';
 };
 
-Cube.prototype.getName = function(){
+xun.Cube.prototype.createCube = function(){
+	//Return single xun.Cube
+	//Contains the inner object, randomly
+	alert('Cube Created!');
+};
+
+xun.Cube.prototype.getName = function(){
 	return this.name;
 };
 
-Cube.prototype.setName = function(name){
+xun.Cube.prototype.setName = function(name){
 	this.name = name;
 };

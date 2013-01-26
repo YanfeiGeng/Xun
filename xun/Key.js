@@ -1,13 +1,13 @@
-goog.provide('Key');
+goog.provide('xun.Key');
 
-Key = function() {
+xun.Key = function() {
 	this.name = '';
 };
 
-Key.prototype.getKeyName = function(){
+xun.Key.prototype.getKeyName = function(){
 	return this.name;
 };
 
-Key.prototype.setKeyName = function(name){
+xun.Key.prototype.setKeyName = function(name){
 	this.name = name;
 }

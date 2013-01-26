@@ -1,35 +1,35 @@
-goog.provide('Monster');
+goog.provide('xun.Monster');
 
-Monster = function() {
+xun.Monster = function() {
 	this.life = '';
 	this.attack = '';
 	this.type = '';
 };
 
-Monster.prototype.getLife = function(){
+xun.Monster.prototype.getLife = function(){
 	return this.life;
 };
 
-Monster.prototype.setLife = function(life){
+xun.Monster.prototype.setLife = function(life){
 	this.life = life;
 };
 
-Monster.prototype.getType = function(){
+xun.Monster.prototype.getType = function(){
 	return this.type;
 };
 
-Monster.prototype.setType = function(type){
+xun.Monster.prototype.setType = function(type){
 	this.type = type;
 };
 
-Monster.prototype.getAttack = function(){
+xun.Monster.prototype.getAttack = function(){
 	return this.attack;
 };
 
-Monster.prototype.setAttack = function(attack){
+xun.Monster.prototype.setAttack = function(attack){
 	this.attack = attack;
 };
 
-Monster.prototype.dropLife = function(amount){
+xun.Monster.prototype.dropLife = function(amount){
 	this.life -= amount;
 }

@@ -12,6 +12,7 @@ goog.require('lime.animation.Spawn');
 goog.require('lime.animation.FadeTo');
 goog.require('lime.animation.ScaleTo');
 goog.require('lime.animation.MoveTo');
+goog.require('xun.Stage');
 
 
 // entrypoint
@@ -46,6 +47,11 @@ xun.newgame = function(mode) {
 
 	//var game = new xun.Game(mode);
 	//layer.appendChild(game);	
+
+    //1. Stage
+    var stage = new xun.Stage();
+    stage.createStage();
+    //2. 
 
 	xun.director.replaceScene(scene);
 };
