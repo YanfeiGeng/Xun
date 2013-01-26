@@ -3,17 +3,33 @@ goog.provide('xun.Stage');
 goog.require('xun.Puzzle');
 goog.require('xun.Card');
 
+
+
 xun.Stage = function() {
+	lime.Sprite.call(this);
 	this.name = '';
 	//1. Create Puzzle
-	var puzzle = new xun.Puzzle();
+	this.puzzle = new xun.Puzzle();
 	//2. Create Card
-	var card = new xun.Card();
-	alert('Create Stage!');
+	this.card = new xun.Card();
+	this.appendChild(this.puzzle);
+	this.appendChild(this.card);
+	return this;
 };
+goog.inherits(xun.Stage, lime.Sprite);
 
-xun.Stage.prototype.createStage = function(){
-
+xun.Stage.config = {
+	cubeWidth:60,
+	cubeHeight:80,
+    puzzle: {
+        row: 3,
+        column : 3,
+        cubes: [
+        	1,2,3,
+        	2,1,3,
+        	4,3,2
+        ]
+    }
 };
 
 xun.Stage.prototype.getName = function(){

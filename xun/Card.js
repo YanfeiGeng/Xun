@@ -1,12 +1,13 @@
 goog.provide('xun.Card');
 
 xun.Card = function() {
+	lime.Sprite.call(this);
 	this.life = ''; //number, full is 1 
 	this.attack = ''; //number, depends on different level
 	this.exp = ''; //number, Will increase along with attack monster
 	this.level = ''; //Number, related with exp
-	alert('Card Created!');
 };
+goog.inherits(xun.Card, lime.Sprite);
 
 xun.Card.prototype.createCard = function(){
 	//Get a new xun.Card object

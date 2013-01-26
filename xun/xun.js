@@ -14,7 +14,6 @@ goog.require('lime.animation.ScaleTo');
 goog.require('lime.animation.MoveTo');
 goog.require('xun.Stage');
 
-
 // entrypoint
 xun.start = function() {
 
@@ -47,13 +46,12 @@ xun.newgame = function(mode) {
 
 	//var game = new xun.Game(mode);
 	//layer.appendChild(game);	
-
-    //1. Stage
+    
     var stage = new xun.Stage();
-    //2. 
-
+    layer.appendChild(stage);
 	xun.director.replaceScene(scene);
 };
+
 
 
 //this is required for outside access after code is compiled in ADVANCED_COMPILATIONS mode

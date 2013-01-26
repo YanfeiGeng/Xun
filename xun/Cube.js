@@ -1,12 +1,17 @@
 goog.provide('xun.Cube');
 
-xun.Cube = function(width, height) {
+xun.Cube = function(type, width, height, posx, posy) {
+	lime.Sprite.call(this);
 	//Return single xun.Cube
 	//Contains the inner object, randomly
-	this.width = width;
-	this.height = height;
-	alert('Cube Created!');
+
+	this.setRenderer(lime.Renderer.DOM)
+	    .setFill('assets/background.jpg')
+	    .setPosition(posx, posy)
+	    .setSize(width, height);
+	// alert('Cube Created!');
 };
+goog.inherits(xun.Cube, lime.Sprite);
 
 xun.Cube.prototype.createCube = function(){
 	
