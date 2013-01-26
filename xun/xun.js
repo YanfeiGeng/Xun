@@ -50,7 +50,6 @@ xun.newgame = function(mode) {
 
     //1. Stage
     var stage = new xun.Stage();
-    stage.createStage();
     //2. 
 
 	xun.director.replaceScene(scene);

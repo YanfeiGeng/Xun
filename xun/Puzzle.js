@@ -4,13 +4,13 @@ goog.require('xun.Cube');
 
 xun.Puzzle = function() {
 	this.name = '';
+	//1. collect the cubes
+	var cube = new xun.Cube(100, 200);
+	alert('Puzzle Created!');
 };
 
 xun.Puzzle.prototype.createPuzzle = function(){
-	//1. collect the cubes
-	var cubes = new xun.Cube();
-	cubes.createCube();
-	alert('Puzzle Created!');
+	
 };
 
 xun.Puzzle.prototype.setName = function(name){

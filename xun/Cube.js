@@ -1,13 +1,15 @@
 goog.provide('xun.Cube');
 
-xun.Cube = function() {
-	this.name = '';
+xun.Cube = function(width, height) {
+	//Return single xun.Cube
+	//Contains the inner object, randomly
+	this.width = width;
+	this.height = height;
+	alert('Cube Created!');
 };
 
 xun.Cube.prototype.createCube = function(){
-	//Return single xun.Cube
-	//Contains the inner object, randomly
-	alert('Cube Created!');
+	
 };
 
 xun.Cube.prototype.getName = function(){

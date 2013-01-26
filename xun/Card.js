@@ -5,11 +5,11 @@ xun.Card = function() {
 	this.attack = ''; //number, depends on different level
 	this.exp = ''; //number, Will increase along with attack monster
 	this.level = ''; //Number, related with exp
+	alert('Card Created!');
 };
 
 xun.Card.prototype.createCard = function(){
 	//Get a new xun.Card object
-	alert('Card Created!');
 };
 
 xun.Card.prototype.increaseLife = function(amount){
