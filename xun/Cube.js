@@ -14,8 +14,8 @@ xun.Cube = function(type, cubeScale, posScale) {
 	var updateCube = function(amount,singleCb, cube){
 		//1. Drop blood of the card
 		if(cube && singleCb && amount){
-			cube.removeAllChildren();
-			// singleCb.setSize(0, 0);
+			// cube.removeAllChildren();
+			singleCb.setSize(0, 0);
 			var position = singleCb.getPosition();
 			var config = xun.Stage.config;
 			var newPos = {
@@ -23,9 +23,9 @@ xun.Cube = function(type, cubeScale, posScale) {
 				y : position - config.offsetHeight
 			};
 			var innerObj = spriteCreater.CreateSprite('coin', newPos, cubeScale);
-			// cube.appendChild(innerObj);
+			cube.appendChild(innerObj);
+			alert('Show Bg!');
 			var showBg = function(innerObj){
-				alert('Show Gg!');
 				if(innerObj){
 					innerObj.setSize(0, 0);
 				}
