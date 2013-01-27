@@ -13,6 +13,8 @@ xun.Stage = function() {
 	//2. Create Card
 	this.card = new xun.Card();
 	xun.Stage.config.card = this.card;
+	//3. Background image
+	this.appendChild(this.BgImage());
 	this.appendChild(this.puzzle);
 	this.appendChild(this.card);
 	return this;
@@ -20,19 +22,44 @@ xun.Stage = function() {
 goog.inherits(xun.Stage, lime.Sprite);
 
 xun.Stage.config = {
-	width:1024,
-	height:768,
+	width:1536,
+	height:2048,
+	puzzleWidth:272*5,
+	puzzleHieght:272*6,
+	offsetWidth:85,
+	offsetHeight:110,
     puzzle: {
-        row: 3,
-        column : 3,
+        row: 6,
+        column : 5,
         cubes: [
-        	1,2,3,
-        	2,1,3,
-        	4,3,2
+        	1,2,3,1,2,
+        	2,1,3,2,1,
+        	4,3,2,3,2,
+        	3,3,2,1,2,
+        	2,1,2,3,3
         ]
     },
     card: null
 };
+
+xun.Stage.prototype.BgImage = function(){
+	var config = xun.Stage.config;
+	var bgImg = new lime.Sprite;
+	bgImg.setFill('assets/background.png');
+	bgImg.setPosition(config.offsetWidth, config.offsetHeight);
+	bgImg.setAnchorPoint(0, 0);
+
+	var allBgImg = new lime.Sprite;
+	allBgImg.setFill('assets/background02.png');
+	allBgImg.setPosition(0, 0);
+	allBgImg.setAnchorPoint(0, 0);
+
+	var layer = new lime.Layer();
+	layer.appendChild(allBgImg);
+	layer.appendChild(bgImg);
+	return layer;
+};
+
 
 xun.Stage.prototype.getName = function(){
 	return this.name;

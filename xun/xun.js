@@ -17,14 +17,15 @@ goog.require('xun.Stage');
 // entrypoint
 xun.start = function() {
 
-	xun.director = new lime.Director(document.body, 1024, 768);
+	var config = xun.Stage.config;
+	xun.director = new lime.Director(document.body, config.width, config.height);
 	var scene = new lime.Scene(),
 	    layer = new lime.Layer();
 
 	//var background = new lime.Sprite().setFill(255,150,0).setSize(1536, 2048);
 	//layer.appendChild(background);	
 		
-	var btn = new lime.GlossyButton("Play").setSize(100,50).setPosition(160, 200);
+	var btn = new lime.GlossyButton("Play").setSize(100,50).setPosition(260, 200);
 	goog.events.listen(btn, 'click', function() {
 			xun.newgame(1);
 	});
@@ -35,7 +36,6 @@ xun.start = function() {
 	xun.director.makeMobileWebAppCapable();
 	// set current scene active
 	xun.director.replaceScene(scene);
-
 };
 
 xun.newgame = function(mode) {

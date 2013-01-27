@@ -8,11 +8,11 @@ xun.Puzzle = function() {
 	this.column = xun.Stage.config.puzzle.column;
 	this.row = xun.Stage.config.puzzle.row;
 	this.cubesType = xun.Stage.config.puzzle.cubes;
-	this.width = xun.Stage.config.width;
-	this.height = xun.Stage.config.height;
+	this.width = xun.Stage.config.puzzleWidth;
+	this.height = xun.Stage.config.puzzleHieght;
 	pos = 0;
-	for(var x = 0; x < this.row; x++){
-		for(var y = 0; y < this.column; y++){
+	for(var x = 0; x < this.column; x++){
+		for(var y = 0; y < this.row; y++){
 			var ref = this.cubesType[pos++];
 			var cube = new xun.Cube(ref, this.getCubeScale(), 
 				this.getPosScale(x, y));
