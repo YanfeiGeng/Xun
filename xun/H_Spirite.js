@@ -24,7 +24,10 @@ var SType =
 	BACKGROUND:'background',
 	CUBE:'cube',
 	COIN:'coin',
-	HP:'hp',
+	HP:'blood',
+	ENTER: 'enter',
+	ORC: 'orc',
+	SKELETON: 'skeleton',
 	CARD1:'card1',
 	CARD2:'card2',
 	CARD3:'card3',
@@ -106,10 +109,19 @@ xun.H_Spirite.prototype.CreateSprite = function(Type,Position,Scale) //in_Scene,
 			Block_SP.setFill('assets/block_yes.PNG');
 			break;
 		case SType.COIN:
-			Block_SP.setFill('assets/cube_coin.PNG');
+			Block_SP.setFill('assets/gold.PNG');
 			break;
 		case SType.HP:
-			Block_SP.setFill('assets/cube_hp.PNG');
+			Block_SP.setFill('assets/blood.PNG');
+			break;
+		case SType.ENTER:
+			Block_SP.setFill('assets/enter.png');
+			break;
+		case SType.ORC:
+			Block_SP.setFill('assets/orc.png');
+			break;
+		case SType.SKELETON:
+			Block_SP.setFill('assets/skeleton.png');
 			break;
 	}
 	Block_SP.setRotation(0);

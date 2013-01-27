@@ -29,14 +29,15 @@ xun.Stage.config = {
 	offsetWidth:85,
 	offsetHeight:110,
     puzzle: {
-        row: 1,
-        column : 1,
+        row: 6,
+        column : 5,
         cubes: [
-        	1,2,3,1,2,
-        	2,1,3,2,1,
-        	4,3,2,3,2,
-        	3,3,2,1,2,
-        	2,1,2,3,3
+        	'coin','orc','skeleton','coin','blood',
+        	'coin','skeleton','skeleton','coin','blood',
+        	'coin','skeleton','orc','skeleton','skeleton',
+        	'skeleton','blood','enter','coin','blood',
+        	'coin','orc','orc','orc','blood',
+        	'coin','blood','skeleton','coin','blood'
         ]
     },
     card: null

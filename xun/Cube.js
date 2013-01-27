@@ -2,6 +2,23 @@ goog.provide('xun.Cube');
 
 goog.require('xun.H_Spirite');
 
+var executer = function(type, innerObj){
+	var card = xun.Stage.config.card;
+	if(type != 'enter'){
+		//Remove the inner object
+		innerObj.setSize(0, 0);
+		switch(type){
+			case 'blood':
+				card.increaseLife(10);
+				break;
+			case 'orc':
+			case 'skeleton':
+				card.dropLife(10);
+				break;
+		}
+	}
+}
+
 xun.Cube = function(type, cubeScale, posScale) {
 	lime.Sprite.call(this);
 	//Return single xun.Cube
@@ -14,25 +31,20 @@ xun.Cube = function(type, cubeScale, posScale) {
 	var updateCube = function(amount,singleCb, cube){
 		//1. Drop blood of the card
 		if(cube && singleCb && amount){
-			// cube.removeAllChildren();
-			singleCb.setSize(0, 0);
-			var position = singleCb.getPosition();
-			var config = xun.Stage.config;
-			var newPos = {
-				x : position - config.offsetWidth,
-				y : position - config.offsetHeight
-			};
-			var innerObj = spriteCreater.CreateSprite('coin', newPos, cubeScale);
-			cube.appendChild(innerObj);
-			alert('Show Bg!');
+			cube.removeAllChildren();
+			var parent = singleCb.getParent();
+			if(parent){
+				parent.removeAllChildren();
+			}
+			var innerObj = spriteCreater.CreateSprite(type, posScale, cubeScale);
+			parent.appendChild(innerObj);
 			var showBg = function(innerObj){
 				if(innerObj){
-					innerObj.setSize(0, 0);
+					executer(type, innerObj);
 				}
 			}
 			var callbackBg = function(){
-				// showBg(innerObj);
-				alert('Come In!');
+				showBg(innerObj);
 			}
 			goog.events.listen(innerObj, ['mousedown', 'touchstart'], callbackBg);
 		}

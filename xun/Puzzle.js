@@ -11,8 +11,11 @@ xun.Puzzle = function() {
 	this.width = xun.Stage.config.puzzleWidth;
 	this.height = xun.Stage.config.puzzleHieght;
 	pos = 0;
-	for(var x = 0; x < this.column; x++){
-		for(var y = 0; y < this.row; y++){
+	for(var x = 0; x < this.row; x++){
+		for(var y = 0; y < this.column; y++){
+			if(x == Math.random){
+
+			}
 			var ref = this.cubesType[pos++];
 			var cube = new xun.Cube(ref, this.getCubeScale(), 
 				this.getPosScale(x, y));
@@ -35,8 +38,8 @@ xun.Puzzle.prototype.getCubeScale = function(){
 xun.Puzzle.prototype.getPosScale = function(x, y){
 	var config = xun.Stage.config;
 	var scale = {
-		x : (this.width/this.column)*x + config.offsetWidth,
-		y : (this.height/this.row)*y + config.offsetHeight
+		y : (this.width/this.column)*x + config.offsetHeight,
+		x : (this.height/this.row)*y + config.offsetWidth
 	};
 	return scale;
 };
