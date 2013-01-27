@@ -61,35 +61,22 @@ xun.Card.prototype.getLevel = function(){
 xun.Card.prototype.init = function(){
 	var layer = new lime.Layer();
 	var card = new lime.Sprite().setFill('assets/player01.png').setPosition(0, 0).setAnchorPoint(0, 0);
-	this.lifeLabel = new lime.Label(this.life).setPosition(80, 250).setAnchorPoint(0, 0)
+	this.lifeLabel = new lime.Label(this.life).setPosition(80, 254).setAnchorPoint(0, 0)
 		.setFontColor("#DDDDDD").setFontSize(40);
-	this.attackLabel = new lime.Label(this.attack).setPosition(194, 250).setAnchorPoint(0, 0)
+	this.attackLabel = new lime.Label(this.attack).setPosition(194, 254).setAnchorPoint(0, 0)
 		.setFontColor("#DDDDDD").setFontSize(40);
 	var expbg = new lime.Sprite().setFill("#fff").setSize(59, 59).setPosition(17, 20).setAnchorPoint(0, 0);
 	this.expLabel = new lime.Label(this.exp).setPosition(34, 25).setAnchorPoint(0, 0)
 		.setFontColor("#DDDDDD").setFontSize(40);
-	//this.otherCard = new lime.
 	
-	var spriteCreater = new xun.H_Spirite();
-	var position = {
-		x : 100,
-		y : 50
-	};
-	var scale = {
-		x : 100,
-		y : 50
-	};
-	//this.appendChild(spriteCreater.Create('card',position, scale));
 	layer.appendChild(card);
 	layer.appendChild(this.lifeLabel);
 	layer.appendChild(this.attackLabel);
-	//layer.appendChild(expbg);
 	layer.appendChild(this.expLabel);	
 		
-	layer.setPosition(634, 24).setAnchorPoint(0, 0);
+	layer.setAnchorPoint(0, 0);
 	
 	this.appendChild(layer);
-	this.setPosition(0, 1704).setAnchorPoint(0, 0).setFill('assets/mianban02.png');
 };
 
 xun.Card.prototype.refresh = function(){
