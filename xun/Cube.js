@@ -68,7 +68,8 @@ var updateCube = function(amount,singleCb, cube, rowCol){
 	//1. Drop blood of the card
 	if(cube && singleCb && amount){
 		// cube.removeAllChildren();
-		// var parent = singleCb.getParent();
+		var parent = singleCb.getParent();
+		singleCb.setSize(0,0);
 		// if(parent){
 		// 	parent.removeAllChildren();
 		// }
@@ -174,7 +175,7 @@ xun.Cube = function(type, cubeScale, posScale, rowCol) {
 	this.spriteCreater = new xun.H_Spirite();
 	if(cubeScale && posScale){
 		// if(type == 'enter'){
-			var maskCube = this.spriteCreater.CreateSprite(type, posScale, cubeScale);
+			var maskCube = this.spriteCreater.CreateSprite('cube', posScale, cubeScale);
 			this.appendChild(maskCube);
 			var callback = function(){
 				updateCube(10, maskCube, this, rowCol);
