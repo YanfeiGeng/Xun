@@ -2,6 +2,11 @@ goog.provide('xun.Puzzle');
 
 goog.require('xun.Cube');
 
+var randomPos = {
+	x : Math.floor(Math.random()*this.row),
+	y : Math.floor(Math.random()*this.column)
+}
+
 xun.Puzzle = function() {
 	lime.Sprite.call(this);
 	this.name = '';
@@ -15,17 +20,18 @@ xun.Puzzle = function() {
 		for(var y = 0; y < this.column; y++){
 			// var ref = this.cubesType[pos++]
 			var ref = 'mask';
-			if(x == Math.floor(Math.random()*this.row)
-				&& y == Math.floor(Math.random()*this.column)){
-				var ref = 'enter';
-				this.cubesType[pos-1] = ref;
-			}
 			var pos = {
 				row : x+1,
 				col : y+1
 			};
-			var cube = new xun.Cube(ref, this.getCubeScale(), 
+			var cube = null;
+			if(x == randomPos.x && y == randomPos.y){
+				cube = new xun.Cube('enter', this.getCubeScale(), 
 				this.getPosScale(x, y), pos);
+			} else {
+				cube = new xun.Cube(ref, this.getCubeScale(), 
+				this.getPosScale(x, y), pos);
+			}
 			this.appendChild(cube);
 		}
 	}

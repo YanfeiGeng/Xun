@@ -50,6 +50,7 @@ var executer = function(type, innerObj){
 	if(type != 'enter'){
 		//Remove the inner object
 		innerObj.setSize(0, 0);
+		innerObj.getParent().removeAllChildren();
 		switch(type){
 			case 'blood':
 				card.increaseLife(10);
@@ -62,16 +63,25 @@ var executer = function(type, innerObj){
 	}
 }
 
-var updateCube = function(amount,singleCb, cube){
+var updateCube = function(amount,singleCb, cube, rowCol){
 	//1. Drop blood of the card
 	if(cube && singleCb && amount){
-		cube.removeAllChildren();
-		var parent = singleCb.getParent();
-		if(parent){
-			parent.removeAllChildren();
-		}
-		var innerObj = spriteCreater.CreateSprite(type, posScale, cubeScale);
-		parent.appendChild(innerObj);
+		// cube.removeAllChildren();
+		// var parent = singleCb.getParent();
+		// if(parent){
+		// 	parent.removeAllChildren();
+		// }
+		var index = getIndexByPos(rowCol.row-1, rowCol.col-1);
+
+		var type = xun.Stage.config.puzzle.cubes[index];
+		var spriteCreater = new xun.H_Spirite();
+		var posScale = getScale({
+			x:rowCol.row-1,
+			y:rowCol.col-1
+		});
+		// alert(posScale.x + ', ' + posScale.y);
+		var innerObj = spriteCreater.CreateSprite(type, posScale, null);
+		cube.getParent().appendChild(innerObj);
 		var showBg = function(innerObj){
 			if(innerObj){
 				executer(type, innerObj);
@@ -111,11 +121,11 @@ var enableMask = function(rowCol,orignCube,cube, scale){
 			col:rowCol.col-1
 		};
 		var callback = function(){
-			updateCube(10, clickedUnMask, cube.getParent());
+			updateCube(10, clickedUnMask, cube, rowCol);
 		}
+		goog.events.listen(clickedUnMask, ['mousedown', 'touchstart'], callback);
 		cube.getParent().appendChild(clickedUnMask);
-		// posScale = getScale(rowCol);
-		// alert(posScale);
+
 	}
 	
 	for(pos in targets){
@@ -149,6 +159,12 @@ var checkAvailable = function(){
 
 }
 
+var addMask = function(posScale, cubeScale){
+	var creater = new xun.H_Spirite();
+	var enterCube = creater.CreateSprite('enter', posScale, cubeScale);
+	return enterCube;
+}
+
 xun.Cube = function(type, cubeScale, posScale, rowCol) {
 	lime.Sprite.call(this);
 	//Return single xun.Cube
@@ -156,15 +172,19 @@ xun.Cube = function(type, cubeScale, posScale, rowCol) {
 
 	this.spriteCreater = new xun.H_Spirite();
 	if(cubeScale && posScale){
-		var maskCube = this.spriteCreater.CreateSprite('mask', posScale, cubeScale);
-		this.appendChild(maskCube);
-		var callback = function(){
-			// updateCube(10, singleCb, this);
-			enableMask(rowCol, maskCube, this, posScale);
-		}
-		//Store the arry
-		cubeMaskArray.push(maskCube);
-		goog.events.listen(maskCube, ['mousedown', 'touchstart'], callback);
+		// if(type == 'enter'){
+			var maskCube = this.spriteCreater.CreateSprite('mask', posScale, cubeScale);
+			this.appendChild(maskCube);
+			var callback = function(){
+				// updateCube(10, singleCb, this);
+				enableMask(rowCol, maskCube, this, posScale, type);
+			}
+			//Store the arry
+			cubeMaskArray.push(maskCube);
+			goog.events.listen(maskCube, ['mousedown', 'touchstart'], callback);
+		// } else {
+		// 	this.appendChild(addMask(posScale, cubeScale));
+		// }
 	}
 	
 
