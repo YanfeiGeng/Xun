@@ -62,9 +62,10 @@ xun.Card.prototype.getLevel = function(){
 xun.Card.prototype.refresh = function(){
 	this.removeAllChildren();
 	
-	this.lifeLabel = new lime.Label(this.life).setSize(100, 100).setPosition(100, 10);
-	this.attackLabel = new lime.Label(this.attack).setSize(100, 100).setPosition(10, 10);
-	this.expLabel = new lime.Label(this.exp).setSize(100, 100).setPosition(20, 10);
+	this.lifeLabel = new lime.Label(this.life).setSize(100, 100).setPosition(100, 10).setAnchorPoint(0, 0);
+	this.attackLabel = new lime.Label(this.attack).setSize(100, 100).setPosition(50, 10).setAnchorPoint(0, 0);
+	this.expLabel = new lime.Label(this.exp).setSize(100, 100).setPosition(20, 10).setAnchorPoint(0, 0);
+	this.card = new lime.Sprite().setFill('assets/player01.png').setPosition(634, 0).setAnchorPoint(0, 0);
 	//this.otherCard = new lime.
 	
 	var spriteCreater = new xun.H_Spirite();
@@ -77,9 +78,10 @@ xun.Card.prototype.refresh = function(){
 		y : 50
 	};
 	//this.appendChild(spriteCreater.Create('card',position, scale));
+	this.appendChild(this.card);
 	this.appendChild(this.lifeLabel);
 	this.appendChild(this.attackLabel);
 	this.appendChild(this.expLabel);	
-	
-	this.setPosition(300, 740).setSize(1110, 200);
+		
+	this.setPosition(0, 1704).setSize(1110, 200).setAnchorPoint(0, 0).setFill('assets/mianban02.png');
 };
