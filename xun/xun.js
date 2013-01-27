@@ -7,6 +7,7 @@ goog.require('lime.Scene');
 goog.require('lime.Layer');
 goog.require('lime.Circle');
 goog.require('lime.Label');
+goog.require('lime.Sprite');
 goog.require('lime.GlossyButton');
 goog.require('lime.animation.Spawn');
 goog.require('lime.animation.FadeTo');
