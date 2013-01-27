@@ -33,9 +33,10 @@ xun.Puzzle.prototype.getCubeScale = function(){
 };
 
 xun.Puzzle.prototype.getPosScale = function(x, y){
+	var config = xun.Stage.config;
 	var scale = {
-		x : (this.width/this.column)*x,
-		y : (this.height/this.row)*y
+		x : (this.width/this.column)*x + config.offsetWidth,
+		y : (this.height/this.row)*y + config.offsetHeight
 	};
 	return scale;
 };

@@ -29,8 +29,8 @@ xun.Stage.config = {
 	offsetWidth:85,
 	offsetHeight:110,
     puzzle: {
-        row: 6,
-        column : 5,
+        row: 1,
+        column : 1,
         cubes: [
         	1,2,3,1,2,
         	2,1,3,2,1,

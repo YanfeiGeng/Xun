@@ -63,7 +63,7 @@ xun.H_Spirite.prototype.Create = function(Type,Position,Scale,AMsg) //in_Scene,i
 	switch(Type)
 	{
 		case SType.BLOCK:
-		var Block_SP = new lime.Sprite;
+			var Block_SP = new lime.Sprite;
 			SP=Block_SP; 
         	// NowLayer.appendChild(Block_SP);
         	Block_SP.setFill('assets/block_yes.PNG');
@@ -91,6 +91,39 @@ xun.H_Spirite.prototype.Create = function(Type,Position,Scale,AMsg) //in_Scene,i
 	}
 	
 	return Block_SP;
+}
+
+xun.H_Spirite.prototype.CreateSprite = function(Type,Position,Scale) //in_Scene,in_Layer,
+{
+	
+	var Block_SP = new lime.Sprite;
+	switch(Type)
+	{
+		case SType.BLOCK:
+			Block_SP.setFill('assets/block_yes.PNG');
+			break;
+		case SType.CUBE:
+			Block_SP.setFill('assets/block_yes.PNG');
+			break;
+		case SType.COIN:
+			Block_SP.setFill('assets/cube_coin.PNG');
+			break;
+		case SType.HP:
+			Block_SP.setFill('assets/cube_hp.PNG');
+			break;
+	}
+	Block_SP.setRotation(0);
+	Block_SP.setPosition(Position.x, Position.y);
+    Block_SP.setAnchorPoint(0,0);
+    var Press = function(e)
+    {
+       Block_SP.setFill(255,0,255);
+    }
+    var Up=function(e)
+    {
+    	 Block_SP.setFill(255,0,255);
+    }
+    return Block_SP;
 }
 xun.H_Spirite.prototype.ChangeSpirite=function(Sp_Path)
 {
