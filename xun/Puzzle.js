@@ -13,12 +13,19 @@ xun.Puzzle = function() {
 	pos = 0;
 	for(var x = 0; x < this.row; x++){
 		for(var y = 0; y < this.column; y++){
-			if(x == Math.random){
-
+			// var ref = this.cubesType[pos++]
+			var ref = 'mask';
+			if(x == Math.floor(Math.random()*this.row)
+				&& y == Math.floor(Math.random()*this.column)){
+				var ref = 'enter';
+				this.cubesType[pos-1] = ref;
 			}
-			var ref = this.cubesType[pos++];
+			var pos = {
+				row : x+1,
+				col : y+1
+			};
 			var cube = new xun.Cube(ref, this.getCubeScale(), 
-				this.getPosScale(x, y));
+				this.getPosScale(x, y), pos);
 			this.appendChild(cube);
 		}
 	}

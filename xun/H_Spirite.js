@@ -31,6 +31,7 @@ var SType =
 	CARD1:'card1',
 	CARD2:'card2',
 	CARD3:'card3',
+	MASK:'mask'
 };
 
 xun.H_Spirite = function() {
@@ -123,10 +124,14 @@ xun.H_Spirite.prototype.CreateSprite = function(Type,Position,Scale) //in_Scene,
 		case SType.SKELETON:
 			Block_SP.setFill('assets/skeleton.png');
 			break;
+		case SType.MASK:
+			Block_SP.setFill('assets/mask.png');
+			break;
+
 	}
 	Block_SP.setRotation(0);
+	Block_SP.setAnchorPoint(0,0);
 	Block_SP.setPosition(Position.x, Position.y);
-    Block_SP.setAnchorPoint(0,0);
     var Press = function(e)
     {
        Block_SP.setFill(255,0,255);
