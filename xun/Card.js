@@ -78,6 +78,7 @@ xun.Card.prototype.init = function(){
 	layer.setAnchorPoint(0, 0);
 	
 	this.appendChild(layer);
+	this.setSize(279, 340);
 };
 
 xun.Card.prototype.refresh = function(){

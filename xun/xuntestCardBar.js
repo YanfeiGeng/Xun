@@ -26,11 +26,11 @@ xuntestCardBar.start = function() {
 
 	scene.appendChild(layer);
 
-    var card = new xun.Card();
-	var card2 = new xun.Card();
-	var card3 = new xun.Card();
+    var card = new xun.Card('player01');
+	var card2 = new xun.Card('player02');
+	var card3 = new xun.Card('player02');
 	
-	var cardBar = new xun.CardBar().setPosition(0, 0).setAnchorPoint(0, 0);
+	var cardBar = new xun.CardBar().setPosition(0, 0).setAnchorPoint(0, 0).setSize(1536, 344);
 	cardBar.addCard(card);
 	cardBar.addCard(card2);
 	cardBar.addCard(card3);
