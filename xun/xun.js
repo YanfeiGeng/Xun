@@ -26,11 +26,12 @@ xun.start = function() {
 	//var background = new lime.Sprite().setFill(255,150,0).setSize(1536, 2048);
 	//layer.appendChild(background);	
 		
-	var btn = new lime.GlossyButton("Play").setSize(100,50).setPosition(260, 200);
-	goog.events.listen(btn, 'click', function() {
-			xun.newgame(1);
+	//var btn = new lime.GlossyButton("Play").setSize(100,50).setPosition(260, 200);
+	var start = new lime.Sprite().setFill('assets/title.png').setSize(1536, 2048).setPosition(0, 0).setAnchorPoint(0, 0);
+	goog.events.listen(start, 'click', function() {
+		xun.newgame(1);
 	});
-	layer.appendChild(btn);
+	layer.appendChild(start);
 	
 	scene.appendChild(layer);
 

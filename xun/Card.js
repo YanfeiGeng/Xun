@@ -2,12 +2,13 @@ goog.provide('xun.Card');
 
 goog.require('lime.Label');
 
-xun.Card = function() {
+xun.Card = function(type) {
 	lime.Sprite.call(this);
 	this.life = 60; //number, full is 1 
 	this.attack = 3; //number, depends on different level
 	this.exp = 0; //number, Will increase along with attack monster
 	this.level = 0; //Number, related with exp
+	this.type = type;
 	
 	this.init();
 };
@@ -60,7 +61,7 @@ xun.Card.prototype.getLevel = function(){
 
 xun.Card.prototype.init = function(){
 	var layer = new lime.Layer();
-	var card = new lime.Sprite().setFill('assets/player01.png').setPosition(0, 0).setAnchorPoint(0, 0);
+	var card = new lime.Sprite().setFill('assets/' + this.type + '.png').setPosition(0, 0).setAnchorPoint(0, 0);
 	this.lifeLabel = new lime.Label(this.life).setPosition(80, 254).setAnchorPoint(0, 0)
 		.setFontColor("#DDDDDD").setFontSize(40);
 	this.attackLabel = new lime.Label(this.attack).setPosition(194, 254).setAnchorPoint(0, 0)

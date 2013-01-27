@@ -1,9 +1,7 @@
 goog.provide('xun.Stage');
 
 goog.require('xun.Puzzle');
-goog.require('xun.Card');
-
-
+goog.require('xun.CardBar');
 
 xun.Stage = function() {
 	lime.Sprite.call(this);
@@ -11,12 +9,17 @@ xun.Stage = function() {
 	//1. Create Puzzle
 	this.puzzle = new xun.Puzzle();
 	//2. Create Card
-	this.card = new xun.Card();
-	xun.Stage.config.card = this.card;
+	this.cards = new Array();
+	var card = new xun.Card('player01');
+	var card2 = new xun.Card('player02');
+	this.cardbar = new xun.CardBar().setPosition(0, 1704).setAnchorPoint(0, 0);
+	this.cardbar.addCard(card);
+	this.cardbar.addCard(card2);
+	xun.Stage.config.card = card;
 	//3. Background image
 	this.appendChild(this.BgImage());
 	this.appendChild(this.puzzle);
-	this.appendChild(this.card);
+	this.appendChild(this.cardbar);
 	return this;
 };
 goog.inherits(xun.Stage, lime.Sprite);
