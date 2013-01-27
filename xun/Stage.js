@@ -2,6 +2,7 @@ goog.provide('xun.Stage');
 
 goog.require('xun.Puzzle');
 goog.require('xun.CardBar');
+goog.require('xun.Card');
 
 xun.Stage = function() {
 	lime.Sprite.call(this);

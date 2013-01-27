@@ -98,13 +98,26 @@ var enableMask = function(rowCol,orignCube,cube, scale){
 	var targets = getEnabledCubes(rowCol);
 	var count = 1;
 
+	var spriteCreater = new xun.H_Spirite();
 	if(orignCube){
 		orignCube.setSize(0,0);
-		posScale = getScale(rowCol);
+		var clickedCubeScale = getScale({
+			x:rowCol.row-1,
+			y:rowCol.col-1
+		});
+		var clickedUnMask = spriteCreater.CreateSprite('cube', clickedCubeScale, null);
+		var newUpdateColRow = {
+			row:rowCol.row-1,
+			col:rowCol.col-1
+		};
+		var callback = function(){
+			updateCube(10, clickedUnMask, cube.getParent());
+		}
+		cube.getParent().appendChild(clickedUnMask);
+		// posScale = getScale(rowCol);
 		// alert(posScale);
 	}
-
-	var spriteCreater = new xun.H_Spirite();
+	
 	for(pos in targets){
 		var neiRowCol = targets[pos];
 		if(maskCube){
