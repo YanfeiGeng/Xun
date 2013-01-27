@@ -9,7 +9,6 @@ xun.Card = function() {
 	this.exp = 0; //number, Will increase along with attack monster
 	this.level = 0; //Number, related with exp
 	
-	this.setSize(1000, 200).setFill(255, 255, 0).setPosition(0, 500);
 	this.refresh();
 };
 goog.inherits(xun.Card, lime.Sprite);
@@ -29,22 +28,22 @@ xun.Card.prototype.createCard = function(){
 
 xun.Card.prototype.increaseLife = function(amount){
 	this.life += amount;
-	refresh();
+	this.refresh();
 };
 
 xun.Card.prototype.dropLife = function(amount){
 	this.life -= amount;
-	refresh();
+	this.refresh();
 };
 
 xun.Card.prototype.increaseLevel = function(targetLevel){
 	this.level = targetLevel;
-	refresh();
+	this.refresh();
 };
 
 xun.Card.prototype.increaseExp = function(amount){
 	this.exp += amount;
-	refresh();
+	this.refresh();
 };
 
 xun.Card.prototype.getLife = function(){
@@ -65,7 +64,7 @@ xun.Card.prototype.refresh = function(){
 	this.lifeLabel = new lime.Label(this.life).setSize(100, 100).setPosition(100, 10).setAnchorPoint(0, 0);
 	this.attackLabel = new lime.Label(this.attack).setSize(100, 100).setPosition(50, 10).setAnchorPoint(0, 0);
 	this.expLabel = new lime.Label(this.exp).setSize(100, 100).setPosition(20, 10).setAnchorPoint(0, 0);
-	this.card = new lime.Sprite().setFill('assets/player01.png').setPosition(634, 0).setAnchorPoint(0, 0);
+	this.card = new lime.Sprite().setFill('assets/player01.png').setPosition(634, 24).setAnchorPoint(0, 0);
 	//this.otherCard = new lime.
 	
 	var spriteCreater = new xun.H_Spirite();
@@ -83,5 +82,5 @@ xun.Card.prototype.refresh = function(){
 	this.appendChild(this.attackLabel);
 	this.appendChild(this.expLabel);	
 		
-	this.setPosition(0, 1704).setSize(1110, 200).setAnchorPoint(0, 0).setFill('assets/mianban02.png');
+	this.setPosition(0, 1704).setAnchorPoint(0, 0).setFill('assets/mianban02.png');
 };
