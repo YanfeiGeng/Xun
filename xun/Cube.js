@@ -49,8 +49,9 @@ var executer = function(type, innerObj){
 	var card = xun.Stage.config.card;
 	if(type != 'enter'){
 		//Remove the inner object
-		innerObj.setSize(0, 0);
+		innerObj.getParent().setSize(0,0);
 		innerObj.getParent().removeAllChildren();
+		// innerObj.getParent().removeAllChildren();
 		switch(type){
 			case 'blood':
 				card.increaseLife(10);
@@ -82,9 +83,9 @@ var updateCube = function(amount,singleCb, cube, rowCol){
 		// alert(posScale.x + ', ' + posScale.y);
 		var innerObj = spriteCreater.CreateSprite(type, posScale, null);
 		cube.getParent().appendChild(innerObj);
-		var showBg = function(innerObj){
-			if(innerObj){
-				executer(type, innerObj);
+		var showBg = function(obj){
+			if(obj){
+				executer(type, obj);
 			}
 		}
 		var callbackBg = function(){
@@ -173,11 +174,11 @@ xun.Cube = function(type, cubeScale, posScale, rowCol) {
 	this.spriteCreater = new xun.H_Spirite();
 	if(cubeScale && posScale){
 		// if(type == 'enter'){
-			var maskCube = this.spriteCreater.CreateSprite('mask', posScale, cubeScale);
+			var maskCube = this.spriteCreater.CreateSprite(type, posScale, cubeScale);
 			this.appendChild(maskCube);
 			var callback = function(){
-				// updateCube(10, singleCb, this);
-				enableMask(rowCol, maskCube, this, posScale, type);
+				updateCube(10, maskCube, this, rowCol);
+				// enableMask(rowCol, maskCube, this, posScale, type);
 			}
 			//Store the arry
 			cubeMaskArray.push(maskCube);
