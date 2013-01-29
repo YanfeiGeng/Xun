@@ -38,24 +38,6 @@ xun.Puzzle = function() {
 	//1. collect the cubes
 	this.cube = new xun.Cube();
 };
-goog.inherits(xun.Puzzle, lime.Sprite);
-
-xun.Puzzle.prototype.getCubeScale = function(){
-	var scale = {
-		x : this.width / this.column,
-		y : this.height / this.row
-	};
-	return scale;
-};
-
-xun.Puzzle.prototype.getPosScale = function(x, y){
-	var config = xun.Stage.config;
-	var scale = {
-		y : (this.width/this.column)*x + config.offsetHeight,
-		x : (this.height/this.row)*y + config.offsetWidth
-	};
-	return scale;
-};
 
 xun.Puzzle.prototype.createPuzzle = function(){
 	
