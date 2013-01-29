@@ -39,7 +39,7 @@ xun.Stage.config = {
         	'coin','orc','skeleton','coin','blood',
         	'coin','skeleton','skeleton','coin','blood',
         	'coin','skeleton','orc','skeleton','skeleton',
-        	'skeleton','blood','blood','coin','blood',
+        	'skeleton','blood','enter','coin','blood',
         	'coin','orc','orc','orc','blood',
         	'coin','blood','skeleton','coin','blood'
         ]
