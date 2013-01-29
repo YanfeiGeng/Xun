@@ -16,7 +16,7 @@ xun.Stage = function() {
 	this.cardbar = new xun.CardBar().setPosition(0, 1704).setAnchorPoint(0, 0);
 	this.cardbar.addCard(card);
 	this.cardbar.addCard(card2);
-	xun.Stage.config.card = card;
+	this.cardbar.selectCard(card);
 	//3. Background image
 	this.appendChild(this.BgImage());
 	this.appendChild(this.puzzle);

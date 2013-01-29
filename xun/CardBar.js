@@ -42,6 +42,7 @@ xun.CardBar.prototype.addCard = function(card){
 };
 
 xun.CardBar.prototype.selectCard = function(card){
+	xun.Stage.config.card = card;
 	this.selectedCard = card;
 	this.refresh();
 };
