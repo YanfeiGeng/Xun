@@ -21,7 +21,7 @@ xun.start = function() {
 	var config = xun.Stage.config;
 	xun.director = new lime.Director(document.body, config.width, config.height);
 	var scene = new lime.Scene(),
-	    layer = new lime.Layer();
+	    layer = new lime.Layer().setSize(1536, 2048);
 
 	//var background = new lime.Sprite().setFill(255,150,0).setSize(1536, 2048);
 	//layer.appendChild(background);	
@@ -49,7 +49,7 @@ xun.newgame = function(mode) {
 	//var game = new xun.Game(mode);
 	//layer.appendChild(game);	
     
-    var stage = new xun.Stage();
+    var stage = new xun.Stage().setSize(1536, 2048).setPosition(0, 0).setAnchorPoint(0, 0);
     layer.appendChild(stage);
 	xun.director.replaceScene(scene);
 };

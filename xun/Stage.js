@@ -8,12 +8,12 @@ xun.Stage = function() {
 	lime.Sprite.call(this);
 	this.name = '';
 	//1. Create Puzzle
-	this.puzzle = new xun.Puzzle();
+	this.puzzle = new xun.Puzzle().setPosition(90, 107).setAnchorPoint(0, 0);
 	//2. Create Card
 	this.cards = new Array();
 	var card = new xun.Card('player01');
 	var card2 = new xun.Card('player02');
-	this.cardbar = new xun.CardBar().setPosition(0, 1704).setAnchorPoint(0, 0);
+	this.cardbar = new xun.CardBar(this.puzzle).setPosition(0, 1704).setAnchorPoint(0, 0);
 	this.cardbar.addCard(card);
 	this.cardbar.addCard(card2);
 	this.cardbar.selectCard(card);
@@ -21,6 +21,11 @@ xun.Stage = function() {
 	this.appendChild(this.BgImage());
 	this.appendChild(this.puzzle);
 	this.appendChild(this.cardbar);
+	
+	// goog.events.listen(this, ['mousedown', 'touchstart'], function(e){
+		// alert("Hello Stage:" + e.position.x + " " + e.position.y);
+	// });	
+	
 	return this;
 };
 goog.inherits(xun.Stage, lime.Sprite);
@@ -36,7 +41,7 @@ xun.Stage.config = {
         row: 6,
         column : 5,
         cubes: [
-        	'coin','orc','skeleton','coin','blood',
+        	'coin','orc','sword','coin','blood',
         	'coin','skeleton','skeleton','coin','blood',
         	'coin','skeleton','orc','skeleton','skeleton',
         	'skeleton','blood','enter','coin','blood',

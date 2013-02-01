@@ -34,6 +34,17 @@ xun.Card.prototype.increaseLife = function(amount){
 
 xun.Card.prototype.dropLife = function(amount){
 	this.life -= amount;
+	
+	if (this.life <= 0)
+	{
+		this.life = 0;
+		this.attack = 0;
+	}
+	this.refresh();
+};
+
+xun.Card.prototype.increaseAttack = function(amount){
+	this.attack += amount;
 	this.refresh();
 };
 
@@ -50,6 +61,11 @@ xun.Card.prototype.increaseExp = function(amount){
 xun.Card.prototype.getLife = function(){
 	return this.life;
 };
+
+xun.Card.prototype.getAttack = function(){
+	return this.attack;
+};
+
 
 xun.Card.prototype.getExp = function(){
 	return this.exp;

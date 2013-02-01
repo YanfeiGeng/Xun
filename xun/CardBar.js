@@ -1,13 +1,15 @@
 goog.provide('xun.CardBar');
 
 goog.require('lime.Label');
+goog.require('xun.Puzzle');
 
-xun.CardBar = function() {
+xun.CardBar = function(puzzle) {
 	lime.Sprite.call(this);
 	
 	this.cards = new Array();
 	this.position = [558, 279, 837, 0, 1116];
 	this.selectedCard = null;
+	this.puzzle = puzzle;
 
 	//this.setPosition(0, 1704).setAnchorPoint(0, 0).setFill('assets/mianban02.png');
 	this.setAnchorPoint(0, 0).setFill('assets/mianban02.png');
@@ -42,7 +44,7 @@ xun.CardBar.prototype.addCard = function(card){
 };
 
 xun.CardBar.prototype.selectCard = function(card){
-	xun.Stage.config.card = card;
+	this.puzzle.selectCard(card);
 	this.selectedCard = card;
 	this.refresh();
 };
